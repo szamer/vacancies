@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateVacanciesModelsTable extends Migration
 {
+
+
     /**
      * Run the migrations.
      *
@@ -19,7 +21,10 @@ class CreateVacanciesModelsTable extends Migration
             $table->longText('description');
             $table->string('location');
             $table->integer('salary');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            $table->index('user_id');
         });
     }
 

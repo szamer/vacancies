@@ -10,4 +10,9 @@ class VacanciesController extends Controller
         return view('pages.vacancies.index');
     }        
 
+    public function user()
+    {
+        return $this->belogsTo(User::class);
+    }
+
 }
