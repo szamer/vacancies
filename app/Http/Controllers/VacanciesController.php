@@ -10,7 +10,7 @@ class VacanciesController extends Controller
    
     public function index () {
         
-        $vacancies = DB::table('vacancies')->get();
+        $vacancies = DB::table('vacancies')->paginate(2);
         return view('pages.vacancies.index', compact('vacancies'));
     }        
 

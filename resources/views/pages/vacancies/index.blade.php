@@ -12,7 +12,7 @@
             <div class="col-2"> search </div>
             <div class="col-6"> 
                 <div class="top_vacancies_bar d-flex justify-content-between">
-                    <div class="">Available vacancies(10)</div>
+                    <div class="">Available vacancies({{ count($vacancies)}})</div>
                     <div class="">pusto </div>
                     <a href="/vacancies/create">add new vacancies</a>
                 </div>
@@ -30,6 +30,10 @@
                             </button>
                         </div>
                     @endforeach
+                </div>
+                {{-- Pagination --}}
+                <div class="d-flex justify-content-center">
+                    {!! $vacancies->links() !!}
                 </div>
             </div>
             <div class="col-2"></div>
