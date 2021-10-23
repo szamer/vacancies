@@ -15,4 +15,24 @@ class VacanciesController extends Controller
         return $this->belogsTo(User::class);
     }
 
+    public function create() 
+    {
+        return view('pages.vacancies.create');
+    }
+
+    public function store() 
+    {
+        $data = request()->validate([
+            'title' => 'required|max:255',
+            'description' => 'required|alpha_num',
+            'location' => 'required|max:255',
+            'salary' => 'required|numeric'
+        ]);
+
+        auth()->user()->vacancies()->create($data);
+
+        //\App\Models\VacanciesModel::create($data);
+
+    }
+
 }

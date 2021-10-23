@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [App\Http\Controllers\VacanciesController::class, 'index']);
+Route::get('/vacancies/create', [App\Http\Controllers\VacanciesController::class, 'create']);
+Route::post('/vacancies', [App\Http\Controllers\VacanciesController::class, 'store']);
 
 Auth::routes();
 
