@@ -7,16 +7,33 @@
             <div class="col-2"></div>
             <div class="col-2 text-white .bg-info" > VACANCIES</div>
         </div>
-        <div class="col-2"></div>
-        <div class="col-2"> search </div>
-        <div class="col-6"> 
-            <div class="top_vacancies_bar d-flex justify-content-between">
-                <div class="">Available vacancies(10)</div>
-                <div class="">pusto </div>
-                <a href="#">add new vacancies</a>
+        <div class="container d-flex">
+            <div class="col-2"></div>
+            <div class="col-2"> search </div>
+            <div class="col-6"> 
+                <div class="top_vacancies_bar d-flex justify-content-between">
+                    <div class="">Available vacancies(10)</div>
+                    <div class="">pusto </div>
+                    <a href="/vacancies/create">add new vacancies</a>
+                </div>
+                <div class="container" >
+                    @foreach($vacancies as $vacancy)
+                        <div class="row" ><h1>{{ $vacancy->title}}</h1></div>
+                        <div class="row" >{{ $vacancy->location}} {{ $vacancy->salary}}</div>
+                        <div class="row" >{{ $vacancy->description}}</div>
+                        <div class="row" > 
+                            <button type="button" class="btn btn-primary">
+                                More details
+                            </button>
+                            <button type="button" class="btn btn-primary">
+                                Apply
+                            </button>
+                        </div>
+                    @endforeach
+                </div>
             </div>
+            <div class="col-2"></div>
         </div>
-        <div class="col-2"></div>
     </div>
 
 </div>
