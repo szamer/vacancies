@@ -1,8 +1,52 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
+
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+:root {
+--greenish: #73c2af;
+--greyish: #9c9c9c;
+--blueish: #668b9d;
+}
+
+.grey_button {
+    background-color: var(--greyish);
+    border: none;
+}
+
+.green_button {
+    background-color: var(--greenish);
+    border: none;  
+}
+
+.button {
+    margin: 5px 5px 0 0;
+    color: #fff !important;
+    font-size: 0.6rem !important;
+}
+
+.top_menu {
+    height: 60px;
+    line-height: 60px;
+    background-color: var(--blueish);
+    margin-bottom: 20px;
+    font-size: 1.3rem !important;
+    letter-spacing: 2px;
+    padding-left: 5%;
+}
+
+.top_vacancies_bar {
+    background-color: #ebebeb;
+    background-color: black;
+    height: 30px;
+    border-radius: 5px;
+}
+
+#vacancy_container {
+    font-size: 0.6rem !important;
+}

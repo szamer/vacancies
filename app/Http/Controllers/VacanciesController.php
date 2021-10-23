@@ -11,7 +11,8 @@ class VacanciesController extends Controller
     public function index () {
         
         $vacancies = DB::table('vacancies')->paginate(2);
-        return view('pages.vacancies.index', compact('vacancies'));
+        $vacanciesCount = DB::table('vacancies')->get();
+        return view('pages.vacancies.index', compact('vacancies','vacanciesCount'));
     }        
 
     public function user()
@@ -38,6 +39,21 @@ class VacanciesController extends Controller
 
         return redirect('/');
 
+    }
+
+    public function search(Request $request) 
+    {
+        $term = $request->validate([
+            'search' => ['max:255', 'regex:/[a-zA-Z0-9.,-]+/'],
+        ]);
+
+        $vacancies =DB::table('vacancies')->where('title','LIKE','%'.$term['search'].'%')
+                ->paginate(2);
+
+        $vacanciesCount = DB::table('vacancies')->get();
+
+        
+        return view('pages.vacancies.index', compact('vacancies','vacanciesCount'));
     }
 
 }
