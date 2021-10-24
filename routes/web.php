@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\VacanciesController::class, 'index']);
 Route::get('/vacancies/create', [App\Http\Controllers\VacanciesController::class, 'create'])->middleware('auth');
 Route::post('/vacancies', [App\Http\Controllers\VacanciesController::class, 'store']);
-Route::post('/search', [App\Http\Controllers\VacanciesController::class, 'search']);
+Route::any('/search', [App\Http\Controllers\VacanciesController::class, 'search'])->name('query');
 
 Auth::routes();
 
@@ -25,3 +25,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// Route::match(['get', 'post'], 'search',[
+//     'as' => 'query',
+//     'uses' => 'App\Http\Controllers\VacanciesController@search' ]);

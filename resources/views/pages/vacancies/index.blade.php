@@ -12,14 +12,17 @@
         <div class="container d-flex" id="vacancy_container">
             <div class="col-3 offset-1 d-flex">
                 <div class="container ">
-                    <form method="POST" action="/search" enctype="multipart/form-data">
-                    @csrf
+                    <form method="get" action="/search" enctype="multipart/form-data">
+                    
                         <div class="font-weight-bold" id="filter_title">Filter Vacancies</div>
                         <div>Keywords</div>
-                        <input type="text" class="form-control" name="search" placeholder="Job Title, Keyword.." id="search">
+                        <input type="text" class="form-control" name="query" placeholder="Job Title, Keyword.." id="query">
                         <button class="btn btn-info text-uppercase green_button button font-weight-bold w-100" type="submit" title="Filter results">
                             Filter results
                         </button>
+                        @error('title')
+                            <div class="alert alert-danger">{{ $message }}</div>
+                        @enderror
                     </form>
                 </div>
             </div>
@@ -50,9 +53,15 @@
                     @endforeach
                 </div>
                 {{-- Pagination --}}
+
+                @if(isset($pagination) && !empty($pagination))
                 <div class="d-flex justify-content-center mt-10">
-                    {!! $vacancies->links() !!}
-                </div>
+                        
+                        {{ $pagination->links() }}
+                        
+                    </div>
+                @endif
+               
             </div>
         </div>
     </div>

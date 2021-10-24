@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class VacanciesController extends Controller
 {
@@ -12,7 +13,8 @@ class VacanciesController extends Controller
         
         $vacancies = DB::table('vacancies')->paginate(2);
         $vacanciesCount = DB::table('vacancies')->get();
-        return view('pages.vacancies.index', compact('vacancies','vacanciesCount'));
+        $pagination = $vacancies;
+        return view('pages.vacancies.index', compact('vacancies','vacanciesCount','pagination'));
     }        
 
     public function user()
@@ -43,17 +45,19 @@ class VacanciesController extends Controller
 
     public function search(Request $request) 
     {
-        $term = $request->validate([
-            'search' => ['max:255', 'regex:/[a-zA-Z0-9.,-]+/'],
-        ]);
+        $validatedData = Validator::make($request->all(), [
+            'query' => 'alpha_num|max:5',
+        ])->validate();
 
-        $vacancies =DB::table('vacancies')->where('title','LIKE','%'.$term['search'].'%')
+        $vacancies =DB::table('vacancies')->where('title','LIKE','%'.$validatedData['query'].'%')
                 ->paginate(2);
 
-        $vacanciesCount = DB::table('vacancies')->get();
-
+        $pagination = $vacancies->appends(array(
+            'query' => $validatedData['query'],
+        ));
         
-        return view('pages.vacancies.index', compact('vacancies','vacanciesCount'));
+        $vacanciesCount = DB::table('vacancies')->get();
+        return view('pages.vacancies.index', compact('vacancies','vacanciesCount','pagination'));
     }
 
 }
