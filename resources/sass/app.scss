@@ -1,5 +1,11 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+// Fort Awesome
+@import "~@fortawesome/fontawesome-free/scss/fontawesome";
+@import "~@fortawesome/fontawesome-free/scss/solid";
+@import "~@fortawesome/fontawesome-free/scss/brands";
+@import "~@fortawesome/fontawesome-free/scss/regular";
+
 
 
 // Variables
@@ -28,6 +34,7 @@
     margin: 5px 5px 0 0;
     color: #fff !important;
     font-size: 0.6rem !important;
+    box-shadow: 1px 1px 1px 1px #fefefe;
 }
 
 .top_menu {
@@ -37,16 +44,107 @@
     margin-bottom: 20px;
     font-size: 1.3rem !important;
     letter-spacing: 2px;
-    padding-left: 5%;
 }
 
 .top_vacancies_bar {
     background-color: #ebebeb;
-    background-color: black;
     height: 30px;
     border-radius: 5px;
 }
 
 #vacancy_container {
     font-size: 0.6rem !important;
+}
+
+.vacancy_box {
+    margin: 15px 0;
+}
+
+#search_container {
+    padding: 0;
+}
+
+#filter_title {
+    font-size: 0.9rem;
+    height: 30px;
+    border-bottom: 1px solid #fefefe;
+}
+
+.form-control {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.5rem;
+}
+
+#filter_hint {
+    height: 30px;
+    font-size: 0.75rem;
+}
+
+.page-item.active .page-link{
+    background-color: var(--greenish);
+    border-color: var(--greenish);
+    border-radius: 3px;
+}
+
+.page-link {
+    border: 1px solid var(--greyish);
+    border-radius: 3px;
+    margin: 0 1px;
+    color: var(--greyish);
+}
+
+.page-link:hover {
+    border: 1px solid var(--greyish);
+    border-radius: 3px;
+}
+
+.description {
+    margin: 10px 0;
+}
+
+.job_title {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.pagination {
+    margin-top: 10px;
+}
+
+.salary {
+    margin-left: 30px;
+}
+
+.location, .salary, #available_count {
+    font-size: 0.7rem;
+}
+
+.vacancy_box {
+    padding: 15px;
+}
+
+.vacancy_button {
+    color: var(--greenish) !important;
+    background-color: #fff;
+}
+
+#available_count {
+    padding: 8px 15px;
+}
+
+body {
+    line-height: 1!important;
+}
+
+@media (max-width: 768px) {
+    #search_container {
+        margin-left: 0 !important;
+    }
+
+    #vacancy_container {   
+        flex-direction: column; 
+        align-items: stretch; 
+    }
+
+
 }
